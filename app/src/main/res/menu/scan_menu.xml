@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:icon="@drawable/baseline_done_24"
+        android:title="@string/bill"
+        android:id="@+id/bill_gen"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:icon="@drawable/baseline_add_24"
+        android:title="@string/add"
+        android:id="@+id/add_items"
+        app:showAsAction="ifRoom"
+        />
+
+    <item android:icon="@drawable/barcode_image"
+        android:title="@string/scan"
+        android:id="@+id/scan_icon"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        />
+</menu>
