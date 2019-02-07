@@ -29,7 +29,8 @@
         android:layout_centerVertical="true"
         android:layout_gravity="end|center_vertical"
         android:layout_marginRight="0dp"
-        android:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/colorPrimary"
+        app:borderWidth="8dp"
         android:src="@drawable/barcode_image" />
 
 
