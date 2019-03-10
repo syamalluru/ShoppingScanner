@@ -77,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
         if (dum != null && dum.equals("set")) {
             Log.d(TAG, "calling restoreitemlist: ");
             restoreItemList();
-        } else {
+        }
+        else {
             itemModelArrayList = new ArrayList<>();
             barcodearraylist = new ArrayList<>();
         }
@@ -92,11 +93,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDeleteItemClicked(int position) {
                 int toRemovePrice=Integer.parseInt(itemModelArrayList.get(position).getPrice().trim());
-                int a=Integer.parseInt(priceTv.getText().toString());
-                int b=a-toRemovePrice;
-                priceTv.setText(b+"");
-                itemModelArrayList.remove(position);
-                barcodearraylist.remove(position);
+                int quantity=Integer.parseInt(itemModelArrayList.get(position).getQuantity().trim());
+                if(quantity>1)
+                {
+                    int indivPrice=toRemovePrice/quantity;
+                    int afterremovalPrice=toRemovePrice=indivPrice;
+                    itemModelArrayList.get(position).setPrice(String.valueOf(afterremovalPrice));
+                    itemModelArrayList.get(position).setQuantity(String.valueOf(quantity-1));
+                    int a=Integer.parseInt(priceTv.getText().toString());
+                    int b=a-indivPrice;
+                    priceTv.setText(b+"");
+                }
+                else
+                {
+                    int a=Integer.parseInt(priceTv.getText().toString());
+                    int b=a-toRemovePrice;
+                    priceTv.setText(b+"");
+                    itemModelArrayList.remove(position);
+                    barcodearraylist.remove(position);
+                }
+
                 recyclerViewAdapter.notifyItemRemoved(position);
                 Log.d(TAG, "onDeleteItemClicked: " + itemModelArrayList + "  " + barcodearraylist);
             }
